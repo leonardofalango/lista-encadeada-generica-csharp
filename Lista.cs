@@ -1,30 +1,30 @@
 using System;
-public class IntLinkedList
+public class Lista<T>
 {
-    private IntLinkedListNode? first = null;
+    private Node<T> first = null;
     private int count = 0;
     public int Length => count;
 
-    public void Add(int value)
+    public void Add(T value)
     {
         if (first == null)
         {
-            first = new IntLinkedListNode();
+            first = new Node<T>();
             first.Value = value;
             count++;
             return;
         }
-        var crr = first;
+        Node<T> crr = first;
         while (crr.Next != null)
             crr = crr.Next;
 
-        crr.Next = new IntLinkedListNode();
+        crr.Next = new Node<T>();
         crr.Next.Value = value;
         count++;
 
     }
 
-    public int this[int index]
+    public T this[int index]
     {
         get
         {
@@ -55,12 +55,12 @@ public class IntLinkedList
     }
 }
 
-public class IntLinkedListNode
+public class Node<T>
 {
-    public int Value { get; set; }
+    public T Value { get; set; }
     
-    private IntLinkedListNode next;
-    public IntLinkedListNode Next
+    private Node<T> next;
+    public Node<T> Next
     {
         get { return next; }
         set { next = value; }
